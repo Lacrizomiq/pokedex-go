@@ -30,6 +30,7 @@ func main() {
 	teamController := controllers.NewTeamController(db)
 	r.GET("/api/teams", teamController.GetAllTeams)
 	r.GET("/api/teams/:id", teamController.GetTeam)
+	r.POST("/api/teams", teamController.CreateTeam)
 
 	if err := r.Run(":8080"); err != nil {
 		log.Fatal("Error running server:", err)

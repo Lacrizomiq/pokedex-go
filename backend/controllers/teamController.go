@@ -40,3 +40,18 @@ func (tc *TeamController) GetTeam(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, team)
 }
+
+func (tc *TeamController) CreateTeam(c *gin.Context) {
+	var team models.Team
+	err := c.ShouldBindJSON(&team)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	result := tc.DB.Create(&team)
+	if result.Error != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": result.Error.Error()})
+		return
+	}
+	c.JSON(http.StatusCreated, team)
+}
