@@ -23,11 +23,15 @@ func InitDB() (*gorm.DB, error) {
 		return nil, fmt.Errorf("DB_URL is not set")
 	}
 
+	fmt.Println("Connecting to database with URL:", dbURL)
+
 	// Connect to database
 	db, err := gorm.Open(postgres.Open(dbURL), &gorm.Config{})
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect database: %w", err)
 	}
+
+	fmt.Println("Connected to database")
 
 	return db, nil
 }

@@ -1,4 +1,4 @@
-module github.com/Lacrizomiq/pokedex-go.git
+module github.com/Lacrizomiq/pokedex-go
 
 go 1.22.0
 
