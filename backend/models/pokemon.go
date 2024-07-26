@@ -36,7 +36,7 @@ type Team struct {
 }
 
 func (Team) TableName() string {
-	return "teams"
+	return "team"
 }
 
 type PokemonType struct {
