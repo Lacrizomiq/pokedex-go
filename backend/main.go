@@ -20,14 +20,8 @@ func main() {
 
 	pokemonController := controllers.NewPokemonController(db)
 
-	r.GET("/pokemons", pokemonController.GetAllPokemon)
-	r.GET("/pokemons/:id", pokemonController.GetPokemon)
-
-	r.GET("/hello", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "Hello, World!",
-		})
-	})
+	r.GET("/api/pokemons", pokemonController.GetAllPokemon)
+	r.GET("/api/pokemons/:id", pokemonController.GetPokemon)
 
 	if err := r.Run(":8080"); err != nil {
 		log.Fatal("Error running server:", err)
